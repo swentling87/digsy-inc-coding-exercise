@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# Create Posts
+20.times do
+  action = Action.create!(
+    title: Faker::Hipster.sentence,
+    description: Faker::Hipster.paragraph,
+    img: Faker::Placeholdit.image
+  )
+  action.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+end

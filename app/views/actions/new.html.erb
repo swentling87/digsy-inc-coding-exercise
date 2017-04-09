@@ -1,0 +1,36 @@
+<% if current_user.admin? %>
+  <h1>New Action</h1>
+  <p>Guidelines for Actions</p>
+  <ul>
+    <li>Must have a title and description.</li>
+    <li>Minimum title length is 5 characters.</li>
+    <li>Minimum description length is 20 characters.</li>
+  </ul>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag ('/actions') do %>
+
+      <div class="field action-frm">
+        <%= label_tag "Title" %>
+        <%= text_field_tag "new_action[title]", nil, class: 'form-control', placeholder: "Enter action title" %>
+      </div>
+
+      <div class="field action-frm">
+        <%= label_tag "Image" %>
+        <%= text_field_tag "new_action[img]", nil, placeholder: "Enter action image url", class: 'form-control' %>
+      </div>
+
+      <div class="field action-frm">
+        <%= label_tag "Description" %>
+        <%= text_area_tag "new_action[description]", nil,  rows: 8, class: 'form-control', placeholder: "Enter action description" %>
+      </div>
+
+      <div class="field">
+        <%= submit_tag "Save", class: "btn btn-success action-btn btn-lg pull-right" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div>You're not supposed to be here!</div>
+<% end %>

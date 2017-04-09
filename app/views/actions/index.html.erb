@@ -1,0 +1,29 @@
+<section class="row">
+  <div class="col-md-12">
+    <div class="action_header">
+      <span>
+        <% if current_user.admin? %>
+          <%= link_to "New action", new_action_path, class: 'btn btn-success pull-right action-btn' %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</section>
+<section class="row">
+  <h1 class="action_header">
+    <%= @action.title.capitalize %>
+  </h1>
+  <hr />
+  <div class="col-md-4">
+    <%= image_tag(@action.img, class: "img-responsive center-block", size: "250") %>
+  </div>
+  <div class="col-md-8">
+    <div class="description">
+      <%= @action.description %>
+      <div class="action_choice center-block text-center">
+        <%= link_to "Accept", root_path, class: 'btn btn-success btn-lg' %>
+        <%= link_to "Decline", root_path, class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+  </div>
+</section>

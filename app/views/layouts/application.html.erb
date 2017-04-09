@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <% unless current_page?('/admin') || current_page?('/admins/sign_in') || current_page?('/admins/sign_up') || (current_user.try(:admin?) == true) %>
+    <%= render partial: 'layouts/header' %>
+  <% else %>
+    <%= render partial: 'layouts/admin_header' %>
+  <% end %>
+  <section class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </section>
 </body>
 </html>
